@@ -27,8 +27,8 @@ There will be 4 SCC's as follows
 1 3 2 
 4 6 5 
 
-Applications: One of the common example we see in facebook, facebook use this type 
-of similar algorithm to link some group of people which are strongly connected
+Applications: One of the common example we see in facebook,we know that facebook is graph of users.
+facebook use this type of similar algorithm to link some group of people which are strongly connected
 i.e friends and thus shows same news feed
 
 Algorithm:

@@ -46,7 +46,9 @@ void ps(int n){
 		else {
 			if(j==0)lps[i]=0,i++;
 			else j=lps[j-1];
-		}	}	}
+		}
+	}
+}
 void kmp(string s,string s1){
 	int i=0,j=0,m=s.length(),n=s1.length();
 	ps(n);// For Generating LPS array of the pattern
@@ -61,7 +63,7 @@ void kmp(string s,string s1){
 	
 }
 int main()
-{
+{	//Taking two strings as raw_input.
 	cin>>s>>s1;
 	kmp(s,s1);
 	return 0;

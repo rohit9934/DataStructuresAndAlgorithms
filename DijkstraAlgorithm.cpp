@@ -73,7 +73,7 @@ int main()
 	//cout<<"Enter source vertex and destination vertex"<<endl;
 		cin>>start>>end; //start and end
 		dis[start]=0;
-		pq.push(make_pair(s,dis[s]));
+		pq.push(make_pair(start,dis[start]));
 		while(!pq.empty())
 		{
 			int p=pq.top().first;
@@ -93,7 +93,7 @@ int main()
 			
 		}
 		if(dis[end]==INT_MAX)puts("NO\n");
-		//cout<<"The Shortest distance from source vertex "<<s<<" to destination vertex "<<end<<" is"<<endl;
+		//cout<<"The Shortest distance from source vertex "<<start1<<" to destination vertex "<<end<<" is"<<endl;
 		else cout<<dis[end]<<endl;
 	}
 return 0;

@@ -3,7 +3,39 @@
 /*Implementation is done using vectors (adjacency list) and minimum heap as usual.
 /pairs are used for implementation of minimum heap and connecting weights with vertices.*/
 //Time complexity - O(E logV) where E- No. of Edges and V-No of Vertices thus this implementation fits good for a Sparse Graph.
-//Space Complexity- O(logV), this implementation takes logarithmic extra space.
+//Space Complexity- O(V), this implementation takes Linear extra space.
+/*
+Algorithm:
+
+1) Initialize distances of all vertices as infinite.
+
+2) Create an empty priority_queue pq.  Every item
+   of pq is a pair (weight, vertex). Weight (or 
+   distance) is used used as first item  of pair
+   as first item is by default used to compare
+   two pairs
+
+3) Insert source vertex into pq and make its
+   distance as 0.
+
+4) While either pq doesn't become empty
+    a) Extract minimum distance vertex from pq. 
+       Let the extracted vertex be p.(parent node)
+    b) Loop through all adjacent of p and do 
+       following for every vertex cn.(current node)
+    c) Let the weight from p to cn is cd(current distance).
+           // If there is a shorter path to current node
+           // through p. 
+           If dist[cn] > dist[p] + cd
+
+               (i) Update distance of cn, i.e., do
+                     dist[cn] = dist[p] + weight(cn, p)
+               (ii) Insert cn into the pq (Even if cn is
+                    already there)
+               
+5) Print distance array dist[] to print all shortest
+   paths. 
+*/
 #include<bits/stdc++.h>
 using namespace std;
 #define ii pair<int,int>
@@ -24,7 +56,7 @@ int main()
 	cin>>t;
 	while(t--)
 	{
-		int n,e,x,y,w,s,end;
+		int n,e,x,y,w,start,end;
 		//cout<<"Enter no. of vertices and no. of edges"<<endl;
 		cin>>n>>e;
 		vector<ii> v[n+1];
@@ -37,11 +69,11 @@ int main()
 		bool mark[n+1]={0};
 		int dis[n+1];
 		for(int i=1;i<=n;i++)dis[i]=INT_MAX;
-		priority_queue<ii,vector< ii >,prioritize> pq;
+		priority_queue<pair<int,int>,vector< pair<int,int> >,prioritize> pq;
 	//cout<<"Enter source vertex and destination vertex"<<endl;
-		cin>>s>>end;
-		dis[s]=0;
-		pq.push(ii(s,dis[s]));
+		cin>>start>>end; //start and end
+		dis[start]=0;
+		pq.push(make_pair(s,dis[s]));
 		while(!pq.empty())
 		{
 			int p=pq.top().first;
@@ -55,7 +87,7 @@ int main()
 				if(dis[cn]>dis[p]+cd)
 				{
 					dis[cn]=dis[p]+cd;
-					pq.push(ii(cn,dis[cn]));			
+					pq.push(make_pair(cn,dis[cn]));			
 					}
 			}
 			

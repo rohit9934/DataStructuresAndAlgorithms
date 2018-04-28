@@ -18,9 +18,6 @@ Problem:  Maze is given as N*N binary matrix of blocks where source block
 class Maze
 {
     final int N = 4;
- 
-    /* A utility function to print RatMazeution matrix
-       RatMaze[N][N] */
     void printAnswer(int RatMaze[][])
     {
         for (int i = 0; i < N; i++)
@@ -55,13 +52,11 @@ class Maze
         printAnswer(RatMaze);
         return true;
     }
- 
-    /* A recursive utility function to RatMazeve Maze
-       problem */
+ //Backtracking function.
     boolean recur(int maze[][], int x, int y,
                           int RatMaze[][])
     {
-        // if (x,y is goal) return true
+        // if end of matrix is reached, our base case.
         if (x == N - 1 && y == N - 1)
         {
             RatMaze[x][y] = 1;
@@ -71,15 +66,13 @@ class Maze
         // Check if maze[x][y] is valid
         if (isSafe(maze, x, y) == true)
         {
-            // mark x,y as part of RatMazeution path
             RatMaze[x][y] = 1;
  
             /* Move forward in x direction */
             if (recur(maze, x + 1, y, RatMaze))
                 return true;
  
-            /* If moving in x direction doesn't give
-               RatMazeution then  Move down in y direction */
+         //Exploring in y direction.
             if (recur(maze, x, y + 1, RatMaze))
                 return true;
             RatMaze[x][y] = 0;
@@ -88,7 +81,6 @@ class Maze
  
         return false;
     }
- 
     public static void main(String args[])
     {
         Maze rat = new Maze();
